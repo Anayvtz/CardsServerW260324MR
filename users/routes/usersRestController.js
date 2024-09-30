@@ -75,8 +75,7 @@ router.put("/:id", auth, async (req, res) => {
   try {
     const userInfo = req.user;
     const { id } = req.params;
-    console.log("userInfo phone:" + req.body.phone);
-    console.log("user info name:" + req.body.name?.first);
+
 
 
     if (userInfo._id !== id) {

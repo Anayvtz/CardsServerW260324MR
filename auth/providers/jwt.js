@@ -9,7 +9,7 @@ const generateAuthToken = (user) => {
     isAdmin: user.isAdmin,
     isBusiness: user.isBusiness,
   };
-  console.log(SECRET_WORD);
+
 
   const token = jwt.sign(payload, SECRET_WORD);
   return token;
@@ -17,8 +17,7 @@ const generateAuthToken = (user) => {
 
 const verifyToken = (tokenFromClient) => {
   try {
-    console.log("SECRET_WORD:" + SECRET_WORD);
-    console.log("tokenFromClient:" + tokenFromClient);
+
 
     const payload = jwt.verify(tokenFromClient, SECRET_WORD);
     return payload;
