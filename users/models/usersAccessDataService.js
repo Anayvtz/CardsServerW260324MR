@@ -14,7 +14,7 @@ const registerUser = async (newUser) => {
 
     return user;
   } catch (error) {
-    return createError("Mongoose", error);
+    return createError("Mongoose registerUser:", error);
   }
 };
 
@@ -57,4 +57,34 @@ const loginUser = async (email, password) => {
   }
 };
 
-module.exports = { registerUser, getUser, getUsers, loginUser };
+const editUser = async (id, userInfo) => {
+  try {
+    let { phone } = userInfo;
+    console.log("phone is" + phone);
+
+    let user = await User.findByIdAndUpdate(id, userInfo, { new: true });
+    return user;
+  } catch (err) {
+    return createError("Mongoose editUser:", err);
+  }
+}
+const changeIsBusiness = async (id) => {
+  try {
+    let user = await getUser(id);
+    let { isBusiness } = user;
+    user.isBusiness = !isBusiness;
+    user = await User.findByIdAndUpdate(id, user);
+    return user;
+  } catch (err) {
+    return createError("Mongoose changeIsBusiness:", err);
+  }
+}
+const deleteUser = async (id) => {
+  try {
+    let user = await User.findByIdAndDelete(id);
+    return user;
+  } catch (err) {
+    return createError("Mongoose deleteUser:", err);
+  }
+}
+module.exports = { registerUser, getUser, getUsers, loginUser, editUser, changeIsBusiness, deleteUser };

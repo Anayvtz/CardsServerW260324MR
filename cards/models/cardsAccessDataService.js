@@ -86,6 +86,23 @@ const likeCard = async (cardId, userId) => {
     return createError("Mongoose", error);
   }
 };
+const changeBizNumber = async (cardId, bizNumber) => {
+  try {
+    let card = await Card.findById(cardId);
+    if (!card) {
+      const error = new Error(
+        "A card with this ID cannot be found in the database"
+      );
+      error.status = 404;
+      return createError("Mongoose bizNumber", error);
+    }
+    card.bizNumber = bizNumber;
+    await card.save();
+    return card;
+  } catch (err) {
+    return createError("Mongoose bizNumber", err);
+  }
+};
 
 module.exports = {
   createCard,
@@ -95,4 +112,5 @@ module.exports = {
   updateCard,
   deleteCard,
   likeCard,
+  changeBizNumber,
 };

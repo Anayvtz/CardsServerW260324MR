@@ -7,6 +7,7 @@ const {
   updateCard,
   deleteCard,
   likeCard,
+  changeBizNumber,
 } = require("../models/cardsAccessDataService");
 const auth = require("../../auth/authService");
 const { normalizeCard } = require("../helpers/normalizeCard");
@@ -122,9 +123,15 @@ router.delete("/:id", auth, async (req, res) => {
 router.patch("/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user._id;
-    let card = await likeCard(id, userId);
-    res.send(card);
+    if (Object.keys(req.body).includes('bizNumber')) {
+      const { bizNumber } = req.body;
+      let card = await changeBizNumber(id, bizNumber);
+      res.send(card);
+    } else {
+      const userId = req.user._id;
+      let card = await likeCard(id, userId);
+      res.send(card);
+    }
   } catch (error) {
     handleError(res, error.status || 400, error.message);
   }
