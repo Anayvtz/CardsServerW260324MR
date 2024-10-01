@@ -60,7 +60,7 @@ const loginUser = async (email, password) => {
 const editUser = async (id, userInfo) => {
   try {
     let { phone } = userInfo;
-    console.log("phone is" + phone);
+    
 
     let user = await User.findByIdAndUpdate(id, userInfo, { new: true });
     return user;
