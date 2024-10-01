@@ -1,4 +1,6 @@
 the server listens to port 8182
+the postman url:
+https://documenter.getpostman.com/view/37787493/2sAXxJhaSu
 
 how to install the project?
 1. run the following:
