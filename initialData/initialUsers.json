@@ -1,0 +1,71 @@
+[
+    {
+        "name": {
+            "first": "Ell",
+            "middle": "",
+            "last": "Vis"
+        },
+        "phone": "0512345567",
+        "email": "anayavetz10101234@gmail.com",
+        "password": "Yvtz1858@",
+        "image": {
+            "url": "https://www.image.com",
+            "alt": "image"
+        },
+        "address": {
+            "state": "IL",
+            "country": "Israel",
+            "city": "Arad",
+            "street": "Shoham",
+            "houseNumber": 5,
+            "zip": 8920435
+        },
+        "isBusiness": true
+    },
+    {
+        "name": {
+            "first": "ana",
+            "middle": "",
+            "last": "yavetz"
+        },
+        "phone": "0512345567",
+        "email": "anayavetz20101234@gmail.com",
+        "password": "Yvtz1858@",
+        "image": {
+            "url": "https://www.image.com",
+            "alt": "image"
+        },
+        "address": {
+            "state": "IL",
+            "country": "Israel",
+            "city": "Arad",
+            "street": "Shoham",
+            "houseNumber": 5,
+            "zip": 8920435
+        },
+        "isBusiness": true
+    },
+    {
+        "name": {
+            "first": "limor",
+            "middle": "",
+            "last": "yavetz"
+        },
+        "phone": "0512345567",
+        "email": "anayavetz30101234@gmail.com",
+        "password": "Yvtz1858@",
+        "image": {
+            "url": "https://www.image.com",
+            "alt": "image"
+        },
+        "address": {
+            "state": "IL",
+            "country": "Israel",
+            "city": "Arad",
+            "street": "Shoham",
+            "houseNumber": 5,
+            "zip": 8920435
+        },
+        "isBusiness": false
+    }
+]

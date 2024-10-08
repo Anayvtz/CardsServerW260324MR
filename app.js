@@ -6,6 +6,7 @@ const router = require("./router/router");
 const corsMiddleware = require("./middlewares/cors");
 const { handleError } = require("./utils/handleErrors");
 const loggerMiddleware = require("./logger/loggerService");
+const { generateUsers, generateCards } = require("./initialData/loadData");
 
 const app = express();
 const PORT = process.env.PORT || 8182;
@@ -24,7 +25,17 @@ app.use((err, req, res, next) => {
   return handleError(res, 500, message);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(chalk.yellow("app is listening to port " + PORT));
-  connectToDb();
+  await connectToDb();
+  try {
+    let userId = 0;
+    userId = await generateUsers();
+    console.log("in app userId=" + userId);
+
+    await generateCards(userId);
+  } catch (err) {
+    console.log("after listen when generating mock data. err:" + err.message);
+
+  }
 });
