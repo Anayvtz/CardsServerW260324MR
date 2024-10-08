@@ -7,6 +7,7 @@ const corsMiddleware = require("./middlewares/cors");
 const { handleError } = require("./utils/handleErrors");
 const loggerMiddleware = require("./logger/loggerService");
 const { generateUsers, generateCards } = require("./initialData/loadData");
+const { getUsers } = require("./users/models/usersAccessDataService");
 
 const app = express();
 const PORT = process.env.PORT || 8182;
@@ -29,10 +30,12 @@ app.listen(PORT, async () => {
   console.log(chalk.yellow("app is listening to port " + PORT));
   await connectToDb();
   try {
-    let userId = 0;
-    userId = await generateUsers();
+    if (getUsers().length == 0) {
+      let userId = 0;
+      userId = await generateUsers();
 
-    await generateCards(userId);
+      await generateCards(userId);
+    }
   } catch (err) {
     console.log("after listen when generating mock data. err:" + err.message);
   }
