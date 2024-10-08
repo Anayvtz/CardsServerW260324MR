@@ -31,11 +31,9 @@ app.listen(PORT, async () => {
   try {
     let userId = 0;
     userId = await generateUsers();
-    console.log("in app userId=" + userId);
 
     await generateCards(userId);
   } catch (err) {
     console.log("after listen when generating mock data. err:" + err.message);
-
   }
 });
